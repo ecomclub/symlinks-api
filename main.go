@@ -54,8 +54,8 @@ func main() {
       return
     }
 
-    oldname = fmt.Sprintf("%s%s", root, _oldname[0])
-    newname = fmt.Sprintf("%s%s", root, _newname[0])
+    oldname := fmt.Sprintf("%s%s", root, _oldname[0])
+    newname := fmt.Sprintf("%s%s", root, _newname[0])
     // check if file already exists
     if _, err := os.Lstat(newname); err == nil {
       // remove file before symlink creation
@@ -80,7 +80,7 @@ func main() {
       return
     }
 
-    oldname = fmt.Sprintf("%s%s", root, _oldname[0])
+    oldname := fmt.Sprintf("%s%s", root, _oldname[0])
     // check if file exists, then remove
     if _, err := os.Lstat(oldname); err == nil {
       os.Remove(oldname)
