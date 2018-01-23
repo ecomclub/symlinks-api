@@ -69,7 +69,7 @@ func main() {
       return
     }
 
-    ok(w)
+    success(w)
   })
 
   http.HandleFunc("/delete", func(w http.ResponseWriter, r *http.Request) {
@@ -86,7 +86,7 @@ func main() {
       os.Remove(oldname)
     }
 
-    ok(w)
+    success(w)
   })
 
   log.Println("Listening...")
@@ -94,7 +94,7 @@ func main() {
   log.Fatal(http.ListenAndServe(port, nil))
 }
 
-func ok(w http.ResponseWriter) {
+func success(w http.ResponseWriter) {
   // 200 response
   w.WriteHeader(http.StatusOK)
   w.Write([]byte("OK!\n"))
