@@ -3,7 +3,6 @@ package main
 import (
   "log"
   "net/http"
-  "net/url"
   "os"
   "fmt"
 )
@@ -39,12 +38,6 @@ func main() {
   }
   log.Println("Server root")
   log.Println(root)
-
-  http.Handle("/", func(w http.ResponseWriter, r *http.Request) {
-    // just return not found
-    w.WriteHeader(http.StatusNotFound)
-    w.Write([]byte("Not Found!\n"))
-  })
 
   http.HandleFunc("/create", func(w http.ResponseWriter, r *http.Request) {
     _oldname, ok := r.URL.Query()["oldname"]
