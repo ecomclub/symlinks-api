@@ -17,10 +17,16 @@ sudo go build main.go
 Start application with CLI arguments:
 + Root directory to static files
 + HTTP/TCP port
++ X-Authentication header password
 + Optional log file path
 
 Example:
 
 ```bash
-./main /var/www :3000 /var/log/app.log
+./main /var/www :3000 xyz /var/log/app.log &
+```
+
+```bash
+curl -H 'X-Authentication: xyz' 'http://127.0.0.1:3000/create?newname=foo&oldname=bar'
+curl -H 'X-Authentication: xyz' 'http://127.0.0.1:3000/delete?newname=foo'
 ```
