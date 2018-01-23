@@ -73,17 +73,17 @@ func main() {
   })
 
   http.HandleFunc("/delete", func(w http.ResponseWriter, r *http.Request) {
-    _oldname, ok := r.URL.Query()["oldname"]
-    if !ok || len(_oldname) < 1 {
-      // no oldname query param
+    _newname, ok := r.URL.Query()["newname"]
+    if !ok || len(_newname) < 1 {
+      // no newname query param
       clientError(w)
       return
     }
 
-    oldname := fmt.Sprintf("%s%s", root, _oldname[0])
+    newname := fmt.Sprintf("%s%s", root, _newname[0])
     // check if file exists, then remove
-    if _, err := os.Lstat(oldname); err == nil {
-      os.Remove(oldname)
+    if _, err := os.Lstat(newname); err == nil {
+      os.Remove(newname)
     }
 
     success(w)
